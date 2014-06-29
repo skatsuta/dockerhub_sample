@@ -1,0 +1,52 @@
+allprojects {
+   apply plugin: 'java'
+   apply plugin: 'idea'
+   apply plugin: 'eclipse'
+   apply plugin: 'war'
+
+   repositories {
+		mavenCentral()
+    }
+
+    configurations {
+        provided
+        provided.extendsFrom(compile)
+    }
+
+    sourceSets {
+        main {
+            java {
+                srcDir 'WEB-INF/src'
+                srcDir 'WEB-INF/classes'
+            }
+        }
+        test {
+            java {
+                srcDir 'WEB-INF/src'
+            }
+        }
+    }
+
+    //warファイル出力設定
+ 	war {
+ 		destinationDir = file('./')
+ 		archiveName = 'hello.war'
+ 		webXml = file('WEB-INF/web.xml')
+ 	}
+
+dependencies {
+    compile fileTree(dir: "WEB-INF/lib", include: '*.jar')
+
+    compile 'org.apache.tomcat:tomcat-servlet-api:7.0.53'
+    compile 'org.apache.tomcat:tomcat-jsp-api:7.0.53'
+}
+
+    test.jvmArgs '-XX:-UseSplitVerifier'
+
+    [compileJava, compileTestJava]*.options.collect { options -> options.encoding = 'UTF-8' }
+}
+
+task wrapper(type: Wrapper) {
+    description = "Generates gradlew[.bat] scripts"
+    gradleVersion = "1.6"
+}
