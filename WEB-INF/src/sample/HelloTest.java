@@ -7,7 +7,7 @@ public class HelloTest {
 
 	@Test
 	public void test() {
-		assertEquals(new Hello().getHello(), "Hello World!");
+		assertEquals(new Hello().getHello(), "Hello CAR!");
 	}
 
 }
