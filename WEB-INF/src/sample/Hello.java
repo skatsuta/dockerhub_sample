@@ -14,6 +14,6 @@ public class Hello extends HttpServlet {
 	}
 
 	public String getHello() {
-		return "Hello World!";
+		return "Hello CAR!";
 	}
 }
