@@ -14,6 +14,21 @@ public class Hello extends HttpServlet {
 	}
 
 	public String getHello() {
-		return "<h1>Hello World!</h1>";
+    String var = "Java";
+    String html = 
+        "<!DOCTYPE html>"
+      + "<html lang=\"en\">"
+      + "<head>"
+      + "<meta charset=\"UTF-8\">"
+      + "<title>Hello " + var + "</title>"
+      + "<style>"
+      + "body { background-color: orange; }"
+      + "</style>"
+      + "</head>"
+      + "<body>"
+      + "<h1>Hello " + var + "!</h1>"
+      + "</body>"
+      + "</html>";
+		return html;
 	}
 }
